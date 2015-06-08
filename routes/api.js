@@ -12,8 +12,9 @@ router.get('/*', function (req, res) {
     
     if ( !req.session.sa_access_token && !req.session.access_token ) {
         res.send({
-            success: false,
-            message: "Authorization Failed."
+            success: false
+            , message: "Authorization Failed."
+            , data: req.query
         });
         return;
     }   
@@ -44,8 +45,10 @@ router.post('/*', function (req, res) {
     
     if ( !req.session.sa_access_token && !req.session.access_token ) {
         res.send({
-            success: false,
-            message: "Authorization Failed."
+            success: false
+            , message: "Authorization Failed."
+            , dataQuery: req.query
+            , dataBody: req.body
         });
         return;
     }
@@ -82,8 +85,10 @@ router.put('/*', function (req, res) {
     
     if ( !req.session.sa_access_token && !req.session.access_token ) {
         res.send({
-            success: false,
-            message: "Authorization Failed."
+            success: false
+            , message: "Authorization Failed."
+            , dataQuery: req.query
+            , dataBody: req.body
         });
         return;
     }
@@ -111,6 +116,36 @@ router.put('/*', function (req, res) {
             console.log(resBody);            
         }
     })).pipe(res);
+});
+
+/* rest api DELETE. */
+router.delete('/*', function (req, res) {
+    var actUrl = config.APIServer;
+    
+    if ( !req.session.sa_access_token && !req.session.access_token ) {
+        res.send({
+            success: false
+            , message: "Authorization Failed."
+            , data: req.query
+        });
+        return;
+    }   
+
+    req.headers.Authorization = req.session.sa_access_token || req.session.access_token;
+
+    console.log('DELETE API Url: ' + actUrl);
+
+    console.log('DELETE REQUEST DUMP HEADERS: ');
+    console.log(req.headers);
+
+    apiProxy.web(req, res, {        
+        target: actUrl
+    }, function (err) {
+        res.send({
+            success: false,
+            message: err
+        });
+    });
 });
 
 module.exports = router;
