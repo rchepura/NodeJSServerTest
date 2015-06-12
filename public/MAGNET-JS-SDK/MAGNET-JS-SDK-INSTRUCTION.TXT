@@ -1,0 +1,65 @@
+1. Update npm, if needed:  
+
+    sudo npm update -g npm
+
+2. Install grunt and grunt-cli, if needed:
+
+    sudo npm install -g grunt
+    sudo npm install -g grunt-cli
+    
+3. Clone blowfish-javascript-sdk from git to desktop:
+
+    git clone git@github.com:magnetsystems/blowfish-javascript-sdk.git
+
+4. Go to JavaScript SDK dir:
+
+    cd blowfish-javascript-sdk/js-sdk/
+
+5. npm install
+
+6. Generate magnet-sdk.js:
+    grunt
+    
+7. Generate magnet-sdk-min.js:
+    grunt min
+
+    generated files (magnet-sdk.js and magnet-sdk-min.js) placed on "target" folder
+
+9. Copy this file or files to server with website
+
+10. to include one of these files each page of the web-site after included JQuery library
+
+11. to include after magnet-sdk.js (or magnet-sdk-min.js) generated models.js and controllers.js
+
+
+for example:
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test MagnetJS SDK</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+	</head>
+	<body>
+		<div>Test MagnetJS SDK</div>
+		
+		<script type="text/javascript" src="js/lib/jquery.min.js"></script>		
+		<script type="text/javascript" src="js/lib/magnet-sdk-min.js"></script>		
+		<script type="text/javascript" src="js/e-models.js"></script>
+		<script type="text/javascript" src="js/e-services.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</body>
+</html>
+    
+12. Example using the attached file app.js.txt
+
+13. create reverse-proxy from web-site server to api-server
+
+14. setup "endpointUrl" to dir with the reverse-proxy to api-server
+
+
+
+

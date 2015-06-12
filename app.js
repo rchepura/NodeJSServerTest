@@ -42,6 +42,7 @@ app.use('/', routes);
  * REST API ROUTES
  */
 app.use('/rest', require('./rest/index'));
+app.use('/rest/api', require('./rest/api'));
 
 /*
  * API 

@@ -15,7 +15,7 @@ var config = {
     /*
      * The Auth Sever Url
      */
-   , APIServer: 'https://biggmax.com:443'
+   , APIServer: 'http://54.176.142.218:8443/api/'
    
 };
 

@@ -7,7 +7,7 @@ $(document).bind('pageinit', 'body', function(e){
 });
 
 var App = {
-    endpointUrl   : 'api',
+    endpointUrl   : '',
     Pet  : null,
     Store : null,
     User : null,
